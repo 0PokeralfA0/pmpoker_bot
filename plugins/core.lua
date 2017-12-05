@@ -1,5 +1,5 @@
 local help_text = [[
-*Beyond Messeger Bot Commands :*
+*poker Messeger Bot Commands :*
 
 */id*
 _Show Your And Chat ID_
@@ -64,7 +64,7 @@ _Set The Maximun Messages In A FloodTime To Be Considered As flood_
 */setpvfloodtime*
 _Set The Time That Bot Uses To Check flood_
 
-*/beyond*
+*/poker*
 _Show About Bot_
 
 */sendtoall* `[text]`
@@ -73,30 +73,30 @@ _Send A Message To All User_
 */fwdtoall* `[reply]`
 _Forward A Message To All User_
 
-[Beyond Team Channel](Telegram.Me/BeyondTeam)
+[Poker Team Channel](Telegram.Me/Mini_Hacker)
 _Good Luck_ *:D*
 
 ]]
 
 local mem_help = [[
-*Welcome To Beyond Messenger Bot :*
+*Welcome To Poker Messenger Bot :*
 
 */id*
 _Show Your And Chat ID_
 
-*/beyond*
+*/poker*
 _Show About Bot_
 
-[Beyond Team Channel](Telegram.Me/BeyondTeam)
+[Poker Team Channel](Telegram.Me/Mini_Hacker)
 _Good Luck_ *:D*
 
 ]]
 local profile_text = [[
-@BeyondTeam
+@Mini_Hacker
 ]]
 
 local keyboard = {{"📬پروفایل"},{"🌟کانال ما","🎯اعضای تیم"},{"🔖راهنما","🚦اطلاعات چت"}}
-local start_key = {{{text="👤ارتباط با ما",url="https://telegram.me/SoLiD"}}}
+local start_key = {{{text="👤ارتباط با ما",url="https://telegram.me/Poker_alfa"}}}
 
 local function getindex(t,id) 
 for i,v in pairs(t) do 
@@ -112,7 +112,7 @@ local function reload_plugins( )
   load_plugins() 
 end
 
---By @SoLiD021
+--By @poker_alfa
 local function already_sudo(user_id)
   for k,v in pairs(_config.sudo_users) do
     if user_id == v then
@@ -123,10 +123,10 @@ local function already_sudo(user_id)
   return false
 end
 
---By @SoLiD
+--By @poker_alfa
 local function sudolist(msg)
 local sudo_users = _config.sudo_users
-local text = "Sudo Users :\n"
+local text = "سودو ها :\n"
 for i=1,#sudo_users do
     text = text..i.." - "..sudo_users[i].."\n"
 end
@@ -138,7 +138,7 @@ function add_user(msg)
 end
 function blocked_list(msg)
 local list = redis:smembers('blocked')
- local text = "*Blocked users list!*\n\n"
+ local text = "*لیست بلاک شده ها!*\n\n"
  for k,v in pairs(list) do
  local user_info = redis:hgetall('user:'..v)
   if user_info and user_info.print_name then
@@ -164,7 +164,7 @@ local is_blocked =  redis:sismember('blocked',msg.from.id)
   end
 if (matches[1] == "id" or  matches[1] == "🚦اطلاعات چت") then
 if not msg.reply_to_message then
-return "*Chat ID* : "..msg.chat.id.."\n*Your ID* : "..msg.from.id
+return "*ایدی چت* : "..msg.chat.id.."\n*ایذی شما* : "..msg.from.id
 elseif msg.reply_to_message then
 return "*"..msg.reply_to_message.from.id.."*"
    end
@@ -173,7 +173,7 @@ if matches[1] == "setrealm" and is_sudo(msg) then
    redis:set("realm",msg.chat.id)
 return "*Realm has been add*"
 end
-if matches[1] == "beyond" or matches[1] == "🎯اعضای تیم"  then
+if matches[1] == "poker" or matches[1] == "🎯اعضای تیم"  then
 return _config.info_text
 end
 if matches[1] == "users" and is_sudo(msg) then
@@ -206,26 +206,26 @@ end
 if matches[1] == "block" and is_sudo(msg) then
 if matches[2] then
 redis:sadd('blocked',matches[2])
-send_msg(matches[2], "*You Are Blocked By Admin Command*\n_شما به دستور ادمین بلاک شدید_", "markdown")
+send_msg(matches[2], "*You Are Blocked By Admin Command*\n_شما به دستور امیر بلاک شدید_", "markdown")
 return "_User_ *"..matches[2].."* _has been blocked_"
 end
 if msg.reply_to_message and msg.reply_to_message.forward_from then
   local user = msg.reply_to_message.forward_from.id
 redis:sadd('blocked',user)
-send_msg(user, "*You Are Blocked By Admin Command*\n_شما به دستور ادمین بلاک شدید_", "markdown")
+send_msg(user, "*You Are Blocked By Admin Command*\n_شما به دستور امیر بلاک شدید_", "markdown")
 return "_User_ *"..user.."* _has been blocked_"
 end
 end
 if matches[1] == "unblock" and is_sudo(msg) then
 if matches[2] then
 redis:srem('blocked',matches[2])
-send_msg(matches[2], "*You Are Unblocked By Admin Command*\n_شما به دستور ادمین از بلاک خارج شدید_", "markdown")
+send_msg(matches[2], "*You Are Unblocked By Admin Command*\n_شما به دستور امیر از بلاک خارج شدید_", "markdown")
 return "_User_ *"..matches[2].."* _has been unblocked_"
 end
 if msg.reply_to_message and msg.reply_to_message.forward_from then
   local user = msg.reply_to_message.forward_from.id
 redis:srem('blocked',user)
-send_msg(user, "*You Are Unblocked By Admin Command*\n_شما به دستور ادمین از بلاک خارج شدید_", "markdown")
+send_msg(user, "*You Are Unblocked By Admin Command*\n_شما به دستور امیر از بلاک خارج شدید_", "markdown")
 return "_User_ *"..user.."* _has been unblocked_"
 end
 end
@@ -381,12 +381,12 @@ if msg.chat.type ~= "private" and not redis:get('AutoLeave') and redis:get("real
    LeaveGroup(msg.chat.id)
 end
     if msg.text == "🌟کانال ما"  then
-   return send_key(msg.from.id, "[our channel](http://telegram.me/BeyondTeam)",markdown)
+   return send_key(msg.from.id, "[our channel](http://telegram.me/Mini_Hacker)",markdown)
  end
 if msg.text == "/start" and msg.chat.type == "private" then
 add_user(msg)
 if not redis:get("setstart") then
-   startmsg = "Welmcome To Official Messenger Bot Of Beyond Team  [our channel](http://telegram.me/BeyondTeam)"
+   startmsg = "Welmcome To Official Messenger Bot Of Beyond Team  [our channel](http://telegram.me/Mini_Hacker)"
        else
     startmsg = redis:get("setstart")
   end
@@ -534,7 +534,7 @@ patterns ={
 "^(🌟کانال ما)$",
 "^[/](blocklist)$",
 "^[/](sudolist)$",
-"^[/](beyond)$",
+"^[/](poker)$",
 "^(🎯اعضای تیم)$",
 "^[/](clean blocklist)$",
 "^[/](users)$",
