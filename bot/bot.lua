@@ -1,8 +1,8 @@
 package.path = package.path..';.luarocks/share/lua/5.2/?.lua;.luarocks/share/lua/5.2/?/init.lua'
 package.cpath = package.cpath..';.luarocks/lib/lua/5.2/?.so'
-    bot_token = "Token" --Put You Token Here
+    bot_token = "285123921:AAHxJS6RelI-kLTssglI5hDXTs1TPki1SCI" --Put You Token Here
    send_api = "https://api.telegram.org/bot"..bot_token
-sudo_id = 157059515
+sudo_id = 256576176
 require('./bot/methods')
 http = require('socket.http')
 https = require('ssl.https')
@@ -130,29 +130,25 @@ function create_config( )
     enabled_plugins = {
     "core"
     },
-    sudo_users = {157059515},--Sudo users
-    info_text = [[*》Beyond Messenger V1.0*
+    sudo_users = {256576176},--Sudo users
+    info_text = [[*》poker Messenger V1.0*
 `》An messenger bot based on plugin`
 
-》[Beyond Messenger](https://github.com/BeyondTeam/BDMessenger)
+》[poker Messenger](https://github.com/0PokeralfA0/pmpoker_bot)
 
 *》Admins :*
-*》Founder & Developer :* [SoLiD](Telegram.Me/SoLiD)
-_》Developer & Sponser :_ [MAKAN](Telegram.Me/MAKAN)
-_》Developer :_ [ToOfan](Telegram.Me/ToOfan)
-_》Developer :_ [Mohammad](Telegram.Me/Mohammadrezajiji)
-_》Developer :_ [AmirHossein](Telegram.Me/Sudo1)
-_》Developer :_ [Ehsan](Telegram.Me/CliFather)
+*》Founder & Developer :* [amir](Telegram.Me/poker_alfa)
+_》Developer & Sponser :_ [poker](Telegram.Me/poker_alfaa)
 
 *》Special thanks to :*
-》[MrHalix](Telegram.Me/MrHalix)
-`And Beyond Team Members`
+》[behzad](Telegram.Me/behzaddavarpanah)
+`And Poker Team Members`
 
 *》Our channel :*
-》[BeyondTeam](Telegram.Me/BeyondTeam)
+》[PokerTeam](Telegram.Me/Mini_Hacker)
 
 *》Our Site :*
-[BeyondTeam](BeyondTeam.ir)
+[pokersite](earn-free.ir)
 ]],
   }
   serialize_to_file(config, './data/config.lua')
