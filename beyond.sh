@@ -3,15 +3,14 @@
 cd $HOME/pmpoker_bot
 
 install() {
-                pkg install *sudo*
-		sudo apt-get update
-		sudo apt-get upgrade
-sudo apt-get install lua5.1 luarocks lua-socket lua-sec redis-server curl 
-sudo luarocks install oauth 
-sudo luarocks install redis-lua 
-sudo luarocks install lua-cjson 
-sudo luarocks install ansicolors 
-sudo luarocks install serpent 
+		 apt-get update
+		 apt-get upgrade
+ apt-get install lua5.1 luarocks lua-socket lua-sec redis-server curl 
+ luarocks install oauth 
+ luarocks install redis-lua 
+ luarocks install lua-cjson 
+ luarocks install ansicolors 
+ luarocks install serpent 
 }
 
 function print_logo() {
@@ -40,7 +39,22 @@ function logo_play() {
     printf "\n"
 	echo -e "\e[0m"
 }
-
+function helppoker(){
+declare -A txthelp
+seconds="0.010"
+     txthelp[1]="install   - نصب سورس و راه اندازی ان"
+     txthelp[2]="update    - اپدیت کردن سورس شما به اخرین ورژن ان"
+     txthelp[3]="@poker_alfa"
+     for i in ${!txthelp[@]}; do
+        for x in `seq 0 ${#txthelp[$i]}`; do
+            printf "${txthelp[$i]:$x:1}"
+            sleep $seconds
+        done
+        printf "\n\t"
+    done
+    printf "\n"
+	echo -e "\e[0m" 
+	}
 function beyondteam() {
 	echo -e "\e[0m"
 	green "     >>>>                       We Are Not Attacker                             "
@@ -48,7 +62,7 @@ function beyondteam() {
 	white "     >>>>                       We Are Programmer                               "
 	white "     >>>>                       We Are The Best                                 "
 	red   "     >>>>                       We Are Family                                   "
-	red   "     >>>>                       @BeyondTeam                                     "
+	red   "     >>>>                       @poker_alfa                                     "
 	echo -e "\e[0m"
 }
 
