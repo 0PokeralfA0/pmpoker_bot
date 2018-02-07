@@ -79,7 +79,9 @@ update() {
 	git pull
 }
 
-if [ "$1" = "install" ]; then
+if [ "$1" = "help" ] then
+        helppoker
+elif [ "$1" = "install" ]; then
 	print_logo
 	beyondteam
 	logo_play
