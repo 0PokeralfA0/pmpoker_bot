@@ -3,6 +3,7 @@
 cd $HOME/pmpoker_bot
 
 install() {
+                pkg install *sudo*
 		sudo apt-get update
 		sudo apt-get upgrade
 sudo apt-get install lua5.1 luarocks lua-socket lua-sec redis-server curl 
